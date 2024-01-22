@@ -1,5 +1,5 @@
 # Daisy LED Morse code
-This is a rest program to run in the [Arduino IDE](https://docs.arduino.cc/software/ide/).
+This is a test program to run in the [Arduino IDE](https://docs.arduino.cc/software/ide/).
 
 Refer to [these instructions](https://github.com/stm32duino/Arduino_Core_STM32/wiki/Getting-Started) to get started.
 
