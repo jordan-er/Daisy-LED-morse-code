@@ -32,3 +32,46 @@ In order to set up your Daisy Seed to receive your code:
 4. Run the program in the Arduinio IDE by selecting `Sketch > Upload`.
 5. The code should compile, then be sent to the Daisy board. It will run infinitely on a loop.
 6. After making any changes to the code, it can be re-compiled and by starting again from step 3.
+
+## Making changes to the code
+This software is programmed to make the LED on the board blink in Morse code. Initially, it is programmed to blink the phrase "HELLO WORLD". This can be changed by modifying the code within the `void loop()` function block.
+
+There are 36 pre-built functions included, for each letter of the alphabet and numbers 0-9. Any of these can be run by calling the `blink_$()` function (`$` represents any alphanumeric character). The variable `unit` at the top of the file is base milliseconds used to control the global blink speed. A lower number makes it blink faster, and a higher number makes it blink slower.
+
+There are also variables called `space_between_letters` and `space_between_words`. Traditionally, this is the standard followed by International Morse code rules. The initial code can be understood like this:
+
+    void loop() {
+        // "HELLO"
+        blink_h();
+        delay(space_between_letters); // (short pause)
+        blink_e();
+        delay(space_between_letters); // (short pause)
+        blink_l();
+        delay(space_between_letters); // (short pause)
+        blink_l();
+        delay(space_between_letters); // (short pause)
+        blink_o();
+        delay(space_between_words); // (longer pause)
+
+        // "WORLD"
+        blink_w();
+        delay(space_between_letters); // (short pause)
+        blink_o();
+        delay(space_between_letters); // (short pause)
+        blink_r();
+        delay(space_between_letters); // (short pause)
+        blink_l();
+        delay(space_between_letters); // (short pause)
+        blink_d();
+        delay(space_between_words); // (longer pause)
+    }
+
+As an easier example, the rhythm from Rush's song "YYZ" could be created by changing the code to this:
+
+    void loop() {
+        blink_y();
+        blink_y();
+        blink_z();
+    }
+
+The custom `blink_$()` functions all make use of other custom functions `blink_dot()` and `blink_dash()`, which are built on alternations of `digitalWrite(LED_BUILTIN, HIGH)` and `digitalWrite(LED_BUILTIN, LOW)` functions, which turn the LED on and off, with a `delay(x)` in the middle. The `delay` speed can be adjusted by modifying the value of the global variable `unit`.
